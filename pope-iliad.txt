@@ -1,4 +1,24 @@
-﻿The Project Gutenberg eBook of The Iliad
+from pathlib import Path
+
+lines = iliad_text.splitlines()  # Split the text into individual lines
+
+# Slice any 1000 lines 
+selected_lines = lines[:1000]
+
+# Create an output directory for the individual files
+output_dir = Path("sliced_files")
+output_dir.mkdir(exist_ok=True)  # Create directory if it doesn't already exist
+
+# Write each line to its own file within the directory
+for idx, line in enumerate(selected_lines, start=1):
+    file_path = output_dir / f"line_{idx}.txt"
+    with open(file_path, "w") as outfile:
+        outfile.write(line)
+
+print("Successfully created 1000 individual files in the 'sliced_files' directory!")
+
+
+The Project Gutenberg eBook of The Iliad
     
 This ebook is for the use of anyone anywhere in the United States and
 most other parts of the world at no cost and with almost no restrictions
